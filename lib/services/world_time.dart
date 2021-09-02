@@ -22,17 +22,18 @@ class WorldTime{
 
       //get properties from data
       String dateTime = data['datetime'];
-      String offSet = data['utc_offset'].substring(1,3);
-      String offSet2 = data['utc_offset'].substring(4,6);
+      String hours = data['utc_offset'].substring(1,3);
+      String minitue = data['utc_offset'].substring(4,6);
       // print(dateTime);
       //
       // print(offSet2);
 
       //date time object
       DateTime now = DateTime.parse(dateTime);
-      now = now.add(Duration(hours: int.parse(offSet),minutes:int.parse(offSet2)));
+      //calculate the crt time
+      now = now.add(Duration(hours: int.parse(hours),minutes:int.parse(minitue)));
 
-      isDayTime = (now.hour > 6 && now.hour <21)?true:false;
+      isDayTime = (now.hour > 6 && now.hour <18)?true:false;
       //set the time property
       time = DateFormat.jm().format(now);
 
