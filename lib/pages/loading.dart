@@ -21,7 +21,7 @@ class _LoadingState extends State<Loading> {
       'location':instances.location,
       'flag':instances.flag,
       'time':instances.time,
-      'isDateTime':instances.isDayTime,
+      'isDayTime':instances.isDayTime,
     });
   }
   @override

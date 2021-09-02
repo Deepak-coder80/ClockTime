@@ -14,10 +14,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     data = data.isEmpty ? (ModalRoute.of(context)?.settings.arguments as Map):data;
-    print(data);
+    //print(data);
     //set background
-    String bgImag = data['isDateTime'] ? 'day.png' : 'night.png';
-    Color bgColor = data['isDateTime'] ? Color(hexColor("#3C516C")) : Color(hexColor("#02304A"));
+    String bgImag = data['isDayTime'] ? 'day.png' : 'night.png';
+    Color bgColor = data['isDayTime'] ? Color(hexColor("#3C516C")) : Color(hexColor("#02304A"));
     return Scaffold(
       backgroundColor: bgColor,
       body: SafeArea(
@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
                       data = {
                         'time': result['time'],
                         'location': result['location'],
-                        'isDateTime': result['isDateTime'],
+                        'isDayTime': result['isDayTime'],
                         'flag':result['flag'],
 
                       };
@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(height: 120.0),
+                SizedBox(height: 80.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -74,14 +74,28 @@ class _HomeState extends State<Home> {
                   height: 20,
                 ),
 
-                Text(
-                  data['location'],
-                  style: TextStyle(
-                    fontSize: 28,
-                    letterSpacing: 2,
-                    color: Colors.white,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/${data['flag']}'),
+                    ),
+                    SizedBox(width: 10,),
+                    Text(
+                      data['location'],
+                      style: TextStyle(
+                        fontSize: 28,
+                        letterSpacing: 2,
+                        color: Colors.white,
+
+                      ),
+                    ),
+
+                  ],
+
                 ),
+
               ],
             ),
           ),

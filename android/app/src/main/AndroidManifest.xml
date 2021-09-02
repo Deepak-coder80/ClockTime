@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.deepakms.apps.clock_time">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="clock_time"
         android:icon="@mipmap/ic_launcher">

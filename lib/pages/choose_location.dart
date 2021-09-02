@@ -1,6 +1,7 @@
 import 'package:clock_time/services/world_time.dart';
 import 'package:flutter/material.dart';
 
+
 class ChooseLocation extends StatefulWidget {
   const ChooseLocation({Key? key}) : super(key: key);
 
@@ -10,15 +11,24 @@ class ChooseLocation extends StatefulWidget {
 
 class _ChooseLocationState extends State<ChooseLocation> {
   List<WorldTime> locations = [
-    WorldTime('London', 'uk.png','Europe/London'),
     WorldTime('Athens', 'greece.png','Europe/Berlin'),
-    WorldTime( 'Cairo',  'egypt.png','Africa/Cairo'),
-    WorldTime( 'Nairobi', 'kenya.png','Africa/Nairobi'),
-    WorldTime(  'Chicago',  'usa.png','America/Chicago'),
-    WorldTime(   'New York',  'usa.png','America/New_York'),
-    WorldTime(   'Seoul',  'south_korea.png','Asia/Seoul'),
-    WorldTime(  'Jakarta', 'indonesia.png','Asia/Jakarta'),
+    WorldTime('Cairo',  'egypt.png','Africa/Cairo'),
+    WorldTime('Catamarca','argentina.png','America/Catamarca'),
+    WorldTime('Chicago',  'usa.png','America/Chicago'),
+    WorldTime('Dhaka','bd.png','Asia/Dhaka'),
+    WorldTime('Eucla','au.png','Astralia/Eucla'),
+    WorldTime('Jakarta', 'indonesia.png','Asia/Jakarta'),
+    WorldTime('London', 'uk.png','Europe/London'),
     WorldTime('Kolkata','india.png','Asia/Kolkata'),
+    WorldTime('Manaus','br.png','America/Manaus'),
+    WorldTime( 'Nairobi', 'kenya.png','Africa/Nairobi'),
+    WorldTime('New York',  'usa.png','America/New_York'),
+    WorldTime('Santiago','cl.png','America/Santiago'),
+    WorldTime('Shangai','cn.png','Asia/Shanghai'),
+    WorldTime('Seoul',  'south_korea.png','Asia/Seoul'),
+
+
+
   ];
 
   void updateTime(index) async{
@@ -30,43 +40,40 @@ class _ChooseLocationState extends State<ChooseLocation> {
       'flag':instance.flag,
       'time':instance.time,
       'isDayTime':instance.isDayTime,
-    }
-    );
+    });
   }
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+      backgroundColor:Colors.grey.shade200 ,
       appBar: AppBar(
+        backgroundColor: Colors.blue.shade900,
+        title: Text("Choose the Location"),
         centerTitle: true,
-        title: Text('Choose Location'),
         elevation: 0,
-        backgroundColor: Color(hexColor("#02304A")),
       ),
       body: ListView.builder(
-          itemCount: locations.length,
-          itemBuilder: (context,index){
-            return Card(
+        itemCount: locations.length,
+        itemBuilder: (context,index){
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: 1.0,horizontal: 4.0),
+            child: Card(
               child: ListTile(
-                onTap: ()=>updateTime(index),
-                title: Text(locations[index].location,style: TextStyle(fontWeight: FontWeight.bold,),),
+                onTap: (){
+                  updateTime(index);
+                },
+                title: Text(locations[index].location),
                 leading: CircleAvatar(
-                  backgroundImage:AssetImage('assets/${locations[index].flag}'),
+                  backgroundImage: AssetImage('assets/${locations[index].flag}'),
                 ),
               ),
-            );
-          }
+            ),
+          );
+        },
       ),
+
     );
-  }
-
-  int hexColor(String Clr){
-    //add prefix
-    String newColor = '0xff'+Clr;
-    //removing # sign
-    newColor = newColor.replaceAll("#", '');
-    //converting it to integer'
-    int finalColor = int.parse(newColor);
-
-    return finalColor;
   }
 }
