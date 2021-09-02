@@ -16,7 +16,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
     WorldTime('Catamarca','argentina.png','America/Catamarca'),
     WorldTime('Chicago',  'usa.png','America/Chicago'),
     WorldTime('Dhaka','bd.png','Asia/Dhaka'),
-    WorldTime('Eucla','au.png','Astralia/Eucla'),
+
     WorldTime('Jakarta', 'indonesia.png','Asia/Jakarta'),
     WorldTime('London', 'uk.png','Europe/London'),
     WorldTime('Kolkata','india.png','Asia/Kolkata'),
