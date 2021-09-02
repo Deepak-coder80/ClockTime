@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
     print(data);
     //set background
     String bgImag = data['isDateTime'] ? 'day.png' : 'night.png';
-    Color bgColor = data['isDateTime'] ? Colors.blue : Colors.blue.shade700;
+    Color bgColor = data['isDateTime'] ? Color(hexColor("#3C516C")) : Color(hexColor("#02304A"));
     return Scaffold(
       backgroundColor: bgColor,
       body: SafeArea(
@@ -57,7 +57,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(height: 20.0),
+                SizedBox(height: 120.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -89,4 +89,16 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+  int hexColor(String Clr){
+    //add prefix
+    String newColor = '0xff'+Clr;
+    //removing # sign
+    newColor = newColor.replaceAll("#", '');
+    //converting it to integer'
+    int finalColor = int.parse(newColor);
+
+    return finalColor;
+  }
 }
+
+
