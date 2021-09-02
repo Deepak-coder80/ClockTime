@@ -15,16 +15,16 @@ class WorldTime {
   Future<void> getTime() async{
     try{
       //make the request
-      Response response = await get(Uri.parse('http://www.worldtimeapi.org/api/timezone/$url'));
+      Response response = await get(Uri.parse('http://www.worldtimeapi.org/api/timezone/Asia/Kolkata'));
       Map data = jsonDecode(response.body);
 
-      //get the propeties form the data
+      //get the properties form the data
       String dateTime = data['dateTime'];
       String offset = data['utc_offset'].substract(1,3);
       String offSet2 = data['utc_offset'].substring(4,6);
 
       DateTime now = DateTime.parse(dateTime);
-      //caculate the crt time
+      //calculate the crt time
       now= now.add(Duration(hours: int.parse(offset),minutes: int.parse(offSet2)));
 
       //check whether its day time or not
